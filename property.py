@@ -15,11 +15,9 @@ See the CachedProperty class.
 
 $Id$
 """
-__metaclass__ = type
-
 ncaches = 0l
 
-class CachedProperty:
+class CachedProperty(object):
     """Cached Properties
 
     Cached properties are computed properties that cache their computed
