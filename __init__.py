@@ -17,7 +17,7 @@ Persistent descriptors:
 
   method
 
-     Idempotent menthod.  The return values are cached based on method
+     Idempotent method.  The return values are cached based on method
      arguments and on any instance attributes that the methods are
      defined to depend on.
 
