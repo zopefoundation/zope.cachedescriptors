@@ -63,21 +63,12 @@ class CachedProperty(object):
 
         func, names, key_name, value_name = self.data
 
-        if names:
-            if len(names) == 1:
-                key = getattr(inst, names[0])
-            else:
-                key = [getattr(inst, name) for name in names]
-        else:
-            key = 0
-
         key = names and [getattr(inst, name) for name in names]
         value = getattr(inst, value_name, self)
 
         if value is not self:
             # We have a cached value
-            oldkey = getattr(inst, key_name, self)
-            if key == oldkey:
+            if key == getattr(inst, key_name, self):
                 # Cache is still good!
                 return value
             
