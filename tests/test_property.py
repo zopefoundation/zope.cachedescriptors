@@ -15,12 +15,10 @@
 
 $Id$
 """
-__metaclass__ = type
-
 from unittest import TestCase, TestSuite, main, makeSuite
 from zope.cachedescriptors.property import CachedProperty
 
-class C:
+class C(object):
 
     called0 = called1 = called2 = 0
     state1 = state2 = 0
