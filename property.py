@@ -13,7 +13,7 @@
 
 See the CachedProperty class.
 
-$Id: property.py,v 1.2 2004/02/20 16:57:34 fdrake Exp $
+$Id$
 """
 __metaclass__ = type
 

@@ -15,7 +15,7 @@
 
 XXX longer description goes here.
 
-$Id: test_property.py,v 1.1 2003/01/25 15:10:24 jim Exp $
+$Id$
 """
 __metaclass__ = type
 
