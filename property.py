@@ -19,35 +19,6 @@ ncaches = 0l
 
 class CachedProperty(object):
     """Cached Properties
-
-    Cached properties are computed properties that cache their computed
-    values.  They take into account instance attributes that they depend
-    on, so when the instance attributes change, the properties will change
-    the values they return.
-    
-    Cached properties cache their data in _v_ attributes, so they are
-    also useful for managing the computation of volatile attributes for
-    persistent objects.
-
-    Example::
-
-      from persistent import Persistent 
-      from zope.cachedescriptors.property import CachedProperty
-
-      class FileManager(Persistent):
-
-         def __init__(self, filename):
-             self.filename = filename
-
-         def file(self):
-             return open(self.filename)
-
-         file = CachedProperty(file, 'filename')
-
-      file_manager = FileManager('data.txt')
-
-      x = file_manager.file.read(10)
-
     """
 
     def __init__(self, func, *names):
@@ -77,5 +48,25 @@ class CachedProperty(object):
         value = func(inst)
         setattr(inst, key_name, key)
         setattr(inst, value_name, value)
+        
+        return value
+
+
+class Lazy(object):
+    """Lazy Attributes
+    """
+
+    def __init__(self, func, name=None):
+        if name is None:
+            name = func.__name__
+        self.data = (func, name)
+
+    def __get__(self, inst, class_):
+        if inst is None:
+            return self
+
+        func, name = self.data
+        value = func(inst)
+        inst.__dict__[name] = value
         
         return value
