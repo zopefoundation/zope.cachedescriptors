@@ -3,7 +3,7 @@
 # All Rights Reserved.
 # 
 # This software is subject to the provisions of the Zope Public License,
-# Version 2.0 (ZPL).  A copy of the ZPL should accompany this distribution.
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
 # THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
 # WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
@@ -90,3 +90,41 @@ class CachedProperty:
         setattr(inst, value_name, value)
         
         return value
+
+class Volatile(object):
+    """Volatile attributs
+
+    Provide access to a volatile attribute, computing it if it
+    doesn't exist.
+
+    For example, suppose we want to have a volatile attribute,
+    _v_data that contains some data we want to cache:
+
+      >>> class C:
+      ...     _v_data = Volatile('_v_data', dict)
+
+      >>> c = C()
+      >>> data = c._v_data
+      >>> data['x'] = 1
+      >>> c._v_data
+      {'x': 1}
+      >>> c._v_data is data
+      True
+
+    Note that the name passed to the constructor must match the
+    name the proprty is assigned to.
+    """
+
+    def __init__(self, name, initfunc):
+        self.name, self.initfunc = name, initfunc
+
+    def __get__(self, inst, class_):
+        # Note that this is only called when an instance doesn't
+        # already have the var
+        if inst is None:
+            return self
+
+        value = self.initfunc()
+        setattr(inst, self.name, value)
+        return value
+    

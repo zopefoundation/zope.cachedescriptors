@@ -94,8 +94,10 @@ class Test(TestCase):
         self.assertEqual(c.called2, 4)
 
 def test_suite():
+    from doctest import DocTestSuite
     return TestSuite((
         makeSuite(Test),
+        DocTestSuite('zope.cachedescriptors.property')
         ))
 
 if __name__=='__main__':
