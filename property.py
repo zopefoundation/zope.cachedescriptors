@@ -13,7 +13,7 @@
 
 See the CachedProperty class.
 
-$Id: property.py,v 1.1 2003/01/25 15:10:22 jim Exp $
+$Id: property.py,v 1.2 2004/02/20 16:57:34 fdrake Exp $
 """
 __metaclass__ = type
 
@@ -33,7 +33,7 @@ class CachedProperty:
 
     Example::
 
-      from persistence import Persistent 
+      from persistent import Persistent 
       from zope.cachedescriptors.property import CachedProperty
 
       class FileManager(Persistent):
