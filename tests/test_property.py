@@ -11,9 +11,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-"""XXX short summary goes here.
-
-XXX longer description goes here.
+"""Test caching of properties.
 
 $Id$
 """
