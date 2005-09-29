@@ -126,3 +126,30 @@ want to use a different name, we need to pass it:
     >>> '%.2f' % point.diameter
     computing diameter
     '5.66'
+
+readproperties
+==============
+
+readproperties are like lazy computed attributes except that the
+attribute isn't set by the property:
+
+
+    >>> class Point:
+    ... 
+    ...     def __init__(self, x, y):
+    ...         self.x, self.y = x, y
+    ...
+    ...     def radius(self):
+    ...         print 'computing radius'
+    ...         return math.sqrt(self.x**2 + self.y**2)
+    ...     radius = property.readproperty(radius)
+
+    >>> point = Point(1.0, 2.0)   
+
+    >>> '%.2f' % point.radius
+    computing radius
+    '2.24'
+
+    >>> '%.2f' % point.radius
+    computing radius
+    '2.24'

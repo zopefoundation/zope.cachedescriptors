@@ -70,3 +70,16 @@ class Lazy(object):
         inst.__dict__[name] = value
         
         return value
+
+class readproperty(object):
+
+    def __init__(self, func):
+        self.func = func
+
+    def __get__(self, inst, class_):
+        if inst is None:
+            return self
+
+        func = self.func
+        return func(inst)
+    
