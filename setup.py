@@ -24,7 +24,7 @@ except ImportError, e:
     from distutils.core import setup, Extension
 
 setup(name='zope.cachedescriptors',
-      version='3.3-dev',
+      version='3.0.0.0',
       url='http://svn.zope.org/zope.cachedescriptors',
       license='ZPL 2.1',
       description='Zope3 Cached Descriptors',
