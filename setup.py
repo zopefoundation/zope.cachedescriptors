@@ -24,7 +24,7 @@ except ImportError, e:
     from distutils.core import setup, Extension
 
 setup(name='zope.cachedescriptors',
-      version='1.0',
+      version='3.3-dev',
       url='http://svn.zope.org/zope.cachedescriptors',
       license='ZPL 2.1',
       description='Zope3 Cached Descriptors',
@@ -36,7 +36,7 @@ setup(name='zope.cachedescriptors',
                        'descriptors will change the values they return.',
       
       packages=['zope', 'zope.cachedescriptors'],
-      package_dir = {'': os.path.join(os.path.dirname(__file__), 'src')},
+      package_dir = {'': 'src'},
 
       namespace_packages=['zope',],
       tests_require = ['zope.testing'],
