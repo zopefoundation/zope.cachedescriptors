@@ -18,13 +18,10 @@ $Id$
 
 import os
 
-try:
-    from setuptools import setup, Extension
-except ImportError, e:
-    from distutils.core import setup, Extension
+from setuptools import setup, find_packages
 
 setup(name='zope.cachedescriptors',
-      version='3.3-dev',
+      version='3.4dev',
       url='http://svn.zope.org/zope.cachedescriptors',
       license='ZPL 2.1',
       description='Zope3 Cached Descriptors',
@@ -35,7 +32,7 @@ setup(name='zope.cachedescriptors',
                        'so when the instance attributes change, the '
                        'descriptors will change the values they return.',
       
-      packages=['zope', 'zope.cachedescriptors'],
+      packages=find_packages('src'),
       package_dir = {'': 'src'},
 
       namespace_packages=['zope',],
@@ -43,5 +40,5 @@ setup(name='zope.cachedescriptors',
       install_requires=['ZODB3'],    # persistent
       include_package_data = True,
 
-      zip_safe = False,
+      zip_safe = False
       )
