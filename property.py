@@ -15,10 +15,12 @@ See the CachedProperty class.
 
 $Id$
 """
+
 ncaches = 0l
 
+
 class CachedProperty(object):
-    """Cached Properties
+    """Cached Properties.
     """
 
     def __init__(self, func, *names):
@@ -42,18 +44,18 @@ class CachedProperty(object):
             if key == getattr(inst, key_name, self):
                 # Cache is still good!
                 return value
-            
+
         # We need to compute and cache the value
 
         value = func(inst)
         setattr(inst, key_name, key)
         setattr(inst, value_name, value)
-        
+
         return value
 
 
 class Lazy(object):
-    """Lazy Attributes
+    """Lazy Attributes.
     """
 
     def __init__(self, func, name=None):
@@ -68,8 +70,9 @@ class Lazy(object):
         func, name = self.data
         value = func(inst)
         inst.__dict__[name] = value
-        
+
         return value
+
 
 class readproperty(object):
 
@@ -82,4 +85,3 @@ class readproperty(object):
 
         func = self.func
         return func(inst)
-    
