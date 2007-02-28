@@ -37,7 +37,8 @@ setup(name='zope.cachedescriptors',
 
       namespace_packages=['zope',],
       tests_require = ['zope.testing'],
-      install_requires=['ZODB3'],    # persistent
+      install_requires=['setuptools',
+                        'ZODB3'],    # persistent
       include_package_data = True,
 
       zip_safe = False
