@@ -21,7 +21,7 @@ import os
 from setuptools import setup, find_packages
 
 setup(name='zope.cachedescriptors',
-      version='3.4dev',
+      version='3.4.0b1',
       url='http://svn.zope.org/zope.cachedescriptors',
       license='ZPL 2.1',
       description='Zope3 Cached Descriptors',
@@ -31,7 +31,7 @@ setup(name='zope.cachedescriptors',
                        'into account instance attributes that they depend on, '
                        'so when the instance attributes change, the '
                        'descriptors will change the values they return.',
-      
+
       packages=find_packages('src'),
       package_dir = {'': 'src'},
 
