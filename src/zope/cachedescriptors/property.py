@@ -85,3 +85,22 @@ class readproperty(object):
 
         func = self.func
         return func(inst)
+
+
+class cachedIn(object):
+    """Cached property with given cache attribute."""
+
+    def __init__(self, attribute_name):
+        self.attribute_name = attribute_name
+
+    def __call__(self, func):
+
+        def get(instance):
+            try:
+                value = getattr(instance, self.attribute_name)
+            except AttributeError:
+                value = func(instance)
+                setattr(instance, self.attribute_name, value)
+            return value
+
+        return property(get)

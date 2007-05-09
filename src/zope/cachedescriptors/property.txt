@@ -155,3 +155,47 @@ attribute isn't set by the property::
     >>> '%.2f' % point.radius
     computing radius
     '2.24'
+
+
+cachedIn
+========
+
+The `cachedIn` property allows to specify the attribute where to store the
+computed value::
+
+    >>> class Point:
+    ... 
+    ...     def __init__(self, x, y):
+    ...         self.x, self.y = x, y
+    ...
+    ...     @property.cachedIn('_radius_attribute')
+    ...     def radius(self):
+    ...         print 'computing radius'
+    ...         return math.sqrt(self.x**2 + self.y**2)
+    
+    >>> point = Point(1.0, 2.0)   
+
+    >>> '%.2f' % point.radius
+    computing radius
+    '2.24'
+
+    >>> '%.2f' % point.radius
+    '2.24'
+
+The radius is cached in the attribute with the given name, `_radius_attribute`
+in this case::
+
+    >>> '%.2f' % point._radius_attribute
+    '2.24'
+
+When the attribute is removed the radius is re-calculated once. This allows
+invalidation::
+
+    >>> del point._radius_attribute
+
+    >>> '%.2f' % point.radius
+    computing radius
+    '2.24'
+
+    >>> '%.2f' % point.radius
+    '2.24'
