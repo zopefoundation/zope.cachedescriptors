@@ -156,6 +156,13 @@ attribute isn't set by the property::
     computing radius
     '2.24'
 
+But you *can* replace the property by setting a value. This is the major
+difference to the builtin `property`::
+
+    >>> point.radius = 5
+    >>> point.radius
+    5
+
 
 cachedIn
 ========
