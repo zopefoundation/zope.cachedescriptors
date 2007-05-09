@@ -8,7 +8,7 @@ the values they return.
 
 Cached properties cache their data in _v_ attributes, so they are
 also useful for managing the computation of volatile attributes for
-persistent objects. Let's look at an example:
+persistent objects. Let's look at an example::
 
     >>> from zope.cachedescriptors import property
     >>> import math
@@ -25,37 +25,38 @@ persistent objects. Let's look at an example:
 
     >>> point = Point(1.0, 2.0)   
 
-If we ask for the radius the first time:
+If we ask for the radius the first time::
 
     >>> '%.2f' % point.radius
     computing radius
     '2.24'
 
-We see that the radius function is called, but if we ask for it again:
+We see that the radius function is called, but if we ask for it again::
 
     >>> '%.2f' % point.radius
     '2.24'
 
 The function isn't called.  If we change one of the attribute the
-radius depends on, it will be recomputed:
+radius depends on, it will be recomputed::
 
     >>> point.x = 2.0
     >>> '%.2f' % point.radius
     computing radius
     '2.83'
 
-But changing other attributes doesn't cause recomputation:
+But changing other attributes doesn't cause recomputation::
 
     >>> point.q = 1
     >>> '%.2f' % point.radius
     '2.83'
 
-Note that we don't have any non-volitile attributes added:
+Note that we don't have any non-volitile attributes added::
 
     >>> names = [name for name in point.__dict__ if not name.startswith('_v_')]
     >>> names.sort()
     >>> names
     ['q', 'x', 'y']
+
 
 Lazy Computed Attributes
 ------------------------
@@ -68,7 +69,7 @@ automatically updated when other attributes change.  Furthermore, the
 store their data using their attribute name, thus overriding
 themselves. This provides much faster attribute access after the
 attribute has been computed. Let's look at the previous example using
-lazy attributes:
+lazy attributes::
 
     >>> class Point:
     ... 
@@ -82,25 +83,25 @@ lazy attributes:
 
     >>> point = Point(1.0, 2.0)   
 
-If we ask for the radius the first time:
+If we ask for the radius the first time::
 
     >>> '%.2f' % point.radius
     computing radius
     '2.24'
 
-We see that the radius function is called, but if we ask for it again:
+We see that the radius function is called, but if we ask for it again::
 
     >>> '%.2f' % point.radius
     '2.24'
 
 The function isn't called.  If we change one of the attribute the
-radius depends on, it still isn't called:
+radius depends on, it still isn't called::
     
     >>> point.x = 2.0
     >>> '%.2f' % point.radius
     '2.24'
 
-If we want the radius to be recomputed, we have to manually delete it:
+If we want the radius to be recomputed, we have to manually delete it::
 
     >>> del point.radius
 
@@ -109,14 +110,14 @@ If we want the radius to be recomputed, we have to manually delete it:
     computing radius
     '2.83'
 
-Note that the radius is stored in the instance dictionary:
+Note that the radius is stored in the instance dictionary::
 
     >>> '%.2f' % point.__dict__['radius']
     '2.83'
 
 The lazy attribute needs to know the attribute name.  It normally
 deduces the attribute name from the name of the function passed. If we
-want to use a different name, we need to pass it:
+want to use a different name, we need to pass it::
 
     >>> def d(point):
     ...     print 'computing diameter'
@@ -127,11 +128,12 @@ want to use a different name, we need to pass it:
     computing diameter
     '5.66'
 
+
 readproperties
 ==============
 
 readproperties are like lazy computed attributes except that the
-attribute isn't set by the property:
+attribute isn't set by the property::
 
 
     >>> class Point:
