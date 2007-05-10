@@ -21,4 +21,4 @@ Persistent descriptors:
      arguments and on any instance attributes that the methods are
      defined to depend on.
 
-     **Note**, methods haven't been implemented yet.
+     **Note**, only a cache based on arguments has been implemented so far.
