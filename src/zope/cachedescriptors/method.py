@@ -26,17 +26,24 @@ class cachedIn(object):
     def __call__(self, func):
 
         def decorated(instance, *args, **kwargs):
-            kw = kwargs.items()
-            kw.sort()
-            key = (args, tuple(kw))
             cache = self.cache(instance)
+            key = self._get_cache_key(*args, **kwargs)
             try:
                 v = cache[key]
             except KeyError:
                 v = cache[key] = func(instance, *args, **kwargs)
             return v
 
+        decorated.invalidate = self.invalidate
         return decorated
+
+    def invalidate(self, instance, *args, **kwargs):
+        cache = self.cache(instance)
+        key = self._get_cache_key(*args, **kwargs)
+        try:
+            del cache[key]
+        except KeyError:
+            pass
 
     def cache(self, instance):
         try:
@@ -45,3 +52,10 @@ class cachedIn(object):
             cache = BTrees.OOBTree.OOBTree()
             setattr(instance, self.attribute_name, cache)
         return cache
+
+    @staticmethod
+    def _get_cache_key(*args, **kwargs):
+        kw = kwargs.items()
+        kw.sort()
+        key = (args, tuple(kw))
+        return key
