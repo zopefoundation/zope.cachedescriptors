@@ -40,7 +40,7 @@ long_description = (
 
 setup(
     name='zope.cachedescriptors',
-    version='3.4.0',
+    version='3.5.0dev',
     url='http://pypi.python.org/pypi/zope.cachedescriptors',
     author='Zope Corporation and Contributors',
     author_email='zope3-dev@zope.org',
