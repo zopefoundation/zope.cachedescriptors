@@ -1,4 +1,5 @@
 Cached descriptors
+==================
 
 Cached descriptors cache their output.  They take into account
 instance attributes that they depend on, so when the instance
