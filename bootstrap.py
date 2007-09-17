@@ -17,19 +17,22 @@ Simply run this script in a directory containing a buildout.cfg.
 The script accepts buildout command-line options, so you can
 use the -c option to specify an alternate configuration file.
 
-$Id: bootstrap.py 72703 2007-02-20 11:49:26Z jim $
+$Id$
 """
 
 import os, shutil, sys, tempfile, urllib2
 
 tmpeggs = tempfile.mkdtemp()
 
-ez = {}
-exec urllib2.urlopen('http://peak.telecommunity.com/dist/ez_setup.py'
-                     ).read() in ez
-ez['use_setuptools'](to_dir=tmpeggs, download_delay=0)
+try:
+    import pkg_resources
+except ImportError:
+    ez = {}
+    exec urllib2.urlopen('http://peak.telecommunity.com/dist/ez_setup.py'
+                         ).read() in ez
+    ez['use_setuptools'](to_dir=tmpeggs, download_delay=0)
 
-import pkg_resources
+    import pkg_resources
 
 cmd = 'from setuptools.command.easy_install import main; main()'
 if sys.platform == 'win32':
