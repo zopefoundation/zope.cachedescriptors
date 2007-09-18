@@ -14,14 +14,12 @@
 $Id$
 """
 
-import BTrees.OOBTree
-
-
 class cachedIn(object):
     """Cached method with given cache attribute."""
 
-    def __init__(self, attribute_name):
+    def __init__(self, attribute_name, factory=dict):
         self.attribute_name = attribute_name
+        self.factory = factory
 
     def __call__(self, func):
 
@@ -49,7 +47,7 @@ class cachedIn(object):
         try:
             cache = getattr(instance, self.attribute_name)
         except AttributeError:
-            cache = BTrees.OOBTree.OOBTree()
+            cache = self.factory()
             setattr(instance, self.attribute_name, cache)
         return cache
 
