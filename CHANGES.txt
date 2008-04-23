@@ -1,6 +1,10 @@
 Changes for zope.cachedescriptors
 =================================
 
+3.5.0 (unreleased)
+------------------
+
+- Removed dependency on ZODB.
 
 3.4.0 (2007-08-30)
 ------------------
