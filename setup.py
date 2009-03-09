@@ -15,35 +15,18 @@
 
 $Id$
 """
-
 import os
-
 from setuptools import setup, find_packages
 
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
-
-long_description = (
-    read('README.txt')
-    + '\n' +
-    read('CHANGES.txt')
-    + '\n' +
-    'Detailed Documentation\n'
-    '**********************\n'
-    + '\n' +
-    read('src', 'zope', 'cachedescriptors', 'README.txt')
-    + '\n' +
-    read('src', 'zope', 'cachedescriptors', 'property.txt')
-    + '\n' +
-    read('src', 'zope', 'cachedescriptors', 'method.txt')
-    )
 
 setup(
     name='zope.cachedescriptors',
     version='3.5.0dev',
     url='http://pypi.python.org/pypi/zope.cachedescriptors',
     author='Zope Corporation and Contributors',
-    author_email='zope3-dev@zope.org',
+    author_email='zope-dev@zope.org',
     license='ZPL 2.1',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -54,8 +37,16 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Software Development',
         ],
-    description='Zope3 Cached Descriptors',
-    long_description=long_description,
+    description='Method and property caching decorators',
+    long_description=\
+        '.. contents::\n\n' +
+        read('src', 'zope', 'cachedescriptors', 'README.txt')
+        + '\n' +
+        read('src', 'zope', 'cachedescriptors', 'property.txt')
+        + '\n' +
+        read('src', 'zope', 'cachedescriptors', 'method.txt')
+        + '\n' +
+        read('CHANGES.txt'),
 
     packages=find_packages('src'),
     package_dir={'': 'src'},

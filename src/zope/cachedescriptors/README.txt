@@ -1,3 +1,4 @@
+==================
 Cached descriptors
 ==================
 
@@ -23,3 +24,5 @@ Persistent descriptors:
      defined to depend on.
 
      **Note**, only a cache based on arguments has been implemented so far.
+     
+     See method.txt.
