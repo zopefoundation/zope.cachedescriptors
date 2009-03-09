@@ -1,4 +1,1 @@
-Cached Descriptors
-******************
-
-.. contents::
+See src/zope/cachedescriptors/README.txt.
