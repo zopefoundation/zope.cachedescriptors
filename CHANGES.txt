@@ -2,7 +2,12 @@
 CHANGES
 =======
 
-3.5.0 (unreleased)
+3.5.1 (unreleased)
+------------------
+
+- ...
+
+3.5.0 (2009-02-10)
 ------------------
 
 - Remove dependency on ZODB by allowing to specify storage factory for
