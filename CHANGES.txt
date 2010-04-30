@@ -2,7 +2,7 @@
 CHANGES
 =======
 
-3.5.1 (unreleased)
+3.5.1 (2010-04-30)
 ------------------
 
 - Removed undeclared testing dependency on zope.testing.
