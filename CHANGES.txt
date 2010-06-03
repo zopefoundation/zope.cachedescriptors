@@ -1,0 +1,76 @@
+=======
+CHANGES
+=======
+
+3.10.3 (2010-04-30)
+===================
+
+- Prefer the standard libraries doctest module to the one from zope.testing.
+
+3.10.2 (2009-11-25)
+===================
+
+- The previous release had a broken egg, sorry.
+
+3.10.1 (2009-11-24)
+===================
+
+- Import hooks functionality from zope.component after it was moved there from
+  zope.site. This lifts the dependency on zope.site and thereby, ZODB.
+
+- Import ISite and IPossibleSite from zope.component after they were moved
+  there from zope.location.
+
+3.10.0 (2009-09-25)
+===================
+
+- Add an ability to forbid publishing of some files in the resource directory,
+  this is done by fnmatch'ing the wildcards in the ``forbidden_names``class
+  attribute of ``DirectoryResource``. By default, the ``.svn`` is in that
+  attribute, so directories won't publish subversion system directory that can
+  contain private information. 
+
+3.9.0 (2009-08-27)
+==================
+
+Initial release. This package was splitted off zope.app.publisher as a part
+of refactoring process.
+
+Additional changes that are made during refactoring:
+
+ * Resource class for file resources are now selected the pluggable way.
+   The resource directory publisher and browser:resource ZCML directive
+   now creating file resources using factory utility lookup based on the
+   file extension, so it's now possible to add new resource types without
+   introducing new ZCML directives and they will work inside resource
+   directories as well.
+   
+   NOTE: the "resource_factories" attribute from the DirectoryResource
+   was removed, so if you were using this attribute for changing resource
+   classes for some file extensions, you need to migrate your code to new
+   utility-based mechanism.
+
+   See zope.browserresource.interfaces.IResourceFactoryFactory interface.
+
+ * The Image resource class was removed, as they are actually simple files.
+   To migrate, simply rename the "image" argument in browser:resource and
+   browser:i18n-resource directives to "file", if you don't do this, resouces
+   will work, but you'll get deprecation warnings.
+ 
+   If you need custom behaviour for images, you can register a resource
+   factory utility for needed file extensions.
+
+ * The PageTemplateResource was moved into a separate package, "zope.ptresource",
+   which is a plugin for this package now. Because of that, the "template"
+   argument of browser:resource directive was deprecated and you should rename
+   it to "file" to migrate. The PageTemplateResource will be created for
+   "pt", "zpt" and "html" files automatically, if zope.ptresource package is
+   included in your configuration.
+
+ * Fix stripping the "I" from an interface name for icon title, if no
+   title is specified.
+
+ * When publishing a resource via Resources view, set resource parent
+   to an ISite object, not to current site manager.
+
+ * Clean up code and improve test coverage.
