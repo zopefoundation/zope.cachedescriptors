@@ -12,8 +12,6 @@
 """Cached properties
 
 See the CachedProperty class.
-
-$Id$
 """
 
 ncaches = 0l

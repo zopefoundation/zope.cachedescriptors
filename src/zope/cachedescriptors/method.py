@@ -10,8 +10,6 @@
 # FOR A PARTICULAR PURPOSE.
 ##############################################################################
 """Cached Methods
-
-$Id$
 """
 
 class cachedIn(object):
