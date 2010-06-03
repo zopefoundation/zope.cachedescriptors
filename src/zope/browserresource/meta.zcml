@@ -1,0 +1,38 @@
+<configure xmlns:meta="http://namespaces.zope.org/meta">
+
+  <meta:directives namespace="http://namespaces.zope.org/browser">
+
+    <meta:directive
+        name="resource"
+        schema=".metadirectives.IResourceDirective"
+        handler=".metaconfigure.resource"
+        />
+
+    <meta:directive
+        name="resourceDirectory"
+        schema=".metadirectives.IResourceDirectoryDirective"
+        handler=".metaconfigure.resourceDirectory"
+        />
+
+    <meta:complexDirective
+        name="i18n-resource"
+        schema=".metadirectives.II18nResourceDirective"
+        handler=".metaconfigure.I18nResource"
+        >
+
+      <meta:subdirective
+          name="translation"
+          schema=".metadirectives.II18nResourceTranslationSubdirective"
+          />
+
+    </meta:complexDirective>
+
+    <meta:directive
+        name="icon"
+        schema=".metadirectives.IIconDirective"
+        handler=".metaconfigure.icon"
+        />
+
+  </meta:directives>
+
+</configure>
