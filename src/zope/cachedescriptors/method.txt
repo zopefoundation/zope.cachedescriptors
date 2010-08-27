@@ -18,7 +18,7 @@ computed value:
     ...     @method.cachedIn('_cache')
     ...     def distance(self, x, y):
     ...         print 'computing distance'
-    ...         return math.sqrt((self.x - x)**2 + (self.y - y)**2)
+    ...         return math.hypot(self.x - x, self.y - y)
     ...
     >>> point = Point(1.0, 2.0)   
 
