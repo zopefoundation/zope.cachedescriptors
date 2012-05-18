@@ -2,9 +2,10 @@
 CHANGES
 =======
 
-3.5.2 (unreleased)
+4.0.0 (unreleased)
 ------------------
 
+- Dropped support for Python 2.4 and 2.5.
 
 3.5.1 (2010-04-30)
 ------------------
