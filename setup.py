@@ -26,7 +26,7 @@ def read(*rnames):
 
 setup(
     name='zope.cachedescriptors',
-    version='4.0.0',
+    version='4.0.1.dev0',
     url='http://pypi.python.org/pypi/zope.cachedescriptors',
     author='Zope Foundation and Contributors',
     author_email='zope-dev@zope.org',
