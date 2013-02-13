@@ -7,6 +7,9 @@ CHANGES
 
 - Dropped support for Python 2.4 and 2.5.
 
+- Added support for Python 3.2 and 3.3.
+
+
 3.5.1 (2010-04-30)
 ------------------
 
