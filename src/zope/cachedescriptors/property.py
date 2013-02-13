@@ -14,7 +14,7 @@
 See the CachedProperty class.
 """
 
-ncaches = 0l
+ncaches = 0
 
 
 class CachedProperty(object):

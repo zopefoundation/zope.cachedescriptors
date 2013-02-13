@@ -52,6 +52,5 @@ class cachedIn(object):
     @staticmethod
     def _get_cache_key(*args, **kwargs):
         kw = kwargs.items()
-        kw.sort()
-        key = (args, tuple(kw))
+        key = (args, tuple(sorted(kw)))
         return key

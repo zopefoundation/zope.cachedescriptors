@@ -22,7 +22,7 @@ persistent objects. Let's look at an example:
     ...         self.x, self.y = x, y
     ...
     ...     def radius(self):
-    ...         print 'computing radius'
+    ...         print('computing radius')
     ...         return math.sqrt(self.x**2 + self.y**2)
     ...     radius = property.CachedProperty(radius, 'x', 'y')
 
@@ -81,7 +81,7 @@ lazy attributes:
     ...
     ...     @property.Lazy
     ...     def radius(self):
-    ...         print 'computing radius'
+    ...         print('computing radius')
     ...         return math.sqrt(self.x**2 + self.y**2)
 
     >>> point = Point(1.0, 2.0)   
@@ -123,7 +123,7 @@ deduces the attribute name from the name of the function passed. If we
 want to use a different name, we need to pass it:
 
     >>> def d(point):
-    ...     print 'computing diameter'
+    ...     print('computing diameter')
     ...     return 2*point.radius
 
     >>> Point.diameter = property.Lazy(d, 'diameter')
@@ -146,7 +146,7 @@ attribute isn't set by the property:
     ...
     ...     @property.readproperty
     ...     def radius(self):
-    ...         print 'computing radius'
+    ...         print('computing radius')
     ...         return math.sqrt(self.x**2 + self.y**2)
 
     >>> point = Point(1.0, 2.0)   
@@ -180,7 +180,7 @@ computed value:
     ...
     ...     @property.cachedIn('_radius_attribute')
     ...     def radius(self):
-    ...         print 'computing radius'
+    ...         print('computing radius')
     ...         return math.sqrt(self.x**2 + self.y**2)
     
     >>> point = Point(1.0, 2.0)   
