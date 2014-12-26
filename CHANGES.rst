@@ -1,25 +1,24 @@
-=======
-CHANGES
+Changes
 =======
 
 4.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add support for testing on Travis.
 
 
 4.0.0 (2013-02-13)
 ------------------
 
-- Dropped support for Python 2.4 and 2.5.
+- Drop support for Python 2.4 and 2.5.
 
-- Added support for Python 3.2 and 3.3.
+- Add support for Python 3.2 and 3.3.
 
 
 3.5.1 (2010-04-30)
 ------------------
 
-- Removed undeclared testing dependency on zope.testing.
+- Remove undeclared testing dependency on zope.testing.
 
 3.5.0 (2009-02-10)
 ------------------
