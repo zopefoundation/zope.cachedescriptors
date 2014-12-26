@@ -17,16 +17,18 @@ Persistent descriptors:
 
 - ``property``
 
-     A simple computed property.
+  A simple computed property.
      
-     See ``src/zope/cachedescriptors/property.txt``.
+  See ``src/zope/cachedescriptors/property.txt``.
 
 - ``method``
 
-     Idempotent method.  The return values are cached based on method
-     arguments and on any instance attributes that the methods are
-     defined to depend on.
+  Idempotent method.  The return values are cached based on method
+  arguments and on any instance attributes that the methods are
+  defined to depend on.
 
-     **Note**, only a cache based on arguments has been implemented so far.
+  .. note::
+  
+     Only a cache based on arguments has been implemented so far.
      
-     See ``src/zope/cachedescriptors/method.txt``.
+  See ``src/zope/cachedescriptors/method.txt``.
