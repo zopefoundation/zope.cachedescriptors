@@ -1,6 +1,9 @@
 ``zope.cachedescriptors``
 =========================
 
+.. image:: https://travis-ci.org/zopefoundation/zope.cachedescriptors.png?branch=master
+        :target: https://travis-ci.org/zopefoundation/zope.cachedescriptors
+
 Cached descriptors cache their output.  They take into account
 instance attributes that they depend on, so when the instance
 attributes change, the descriptors will change the values they
