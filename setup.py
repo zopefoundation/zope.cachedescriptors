@@ -48,14 +48,13 @@ setup(
         ],
     description='Method and property caching decorators',
     long_description=\
-        '.. contents::\n\n' +
-        read('src', 'zope', 'cachedescriptors', 'README.txt')
+        read('README.rst')
         + '\n' +
         read('src', 'zope', 'cachedescriptors', 'property.txt')
         + '\n' +
         read('src', 'zope', 'cachedescriptors', 'method.txt')
         + '\n' +
-        read('CHANGES.txt'),
+        read('CHANGES.rst'),
 
     packages=find_packages('src'),
     package_dir={'': 'src'},
