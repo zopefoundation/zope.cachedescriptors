@@ -1,7 +1,7 @@
 ##############################################################################
 # Copyright (c) 2007 Zope Foundation and Contributors.
 # All Rights Reserved.
-# 
+#
 # This software is subject to the provisions of the Zope Public License,
 # Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
 # THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
@@ -12,6 +12,8 @@
 """Cached Methods
 """
 
+from functools import wraps
+
 class cachedIn(object):
     """Cached method with given cache attribute."""
 
@@ -21,6 +23,7 @@ class cachedIn(object):
 
     def __call__(self, func):
 
+        @wraps(func)
         def decorated(instance, *args, **kwargs):
             cache = self.cache(instance)
             key = self._get_cache_key(*args, **kwargs)

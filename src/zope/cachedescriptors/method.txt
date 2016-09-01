@@ -11,16 +11,17 @@ computed value:
     >>> from zope.cachedescriptors import method
 
     >>> class Point(object):
-    ... 
+    ...
     ...     def __init__(self, x, y):
     ...         self.x, self.y = x, y
     ...
     ...     @method.cachedIn('_cache')
     ...     def distance(self, x, y):
+    ...         "Compute the distance"
     ...         print('computing distance')
     ...         return math.hypot(self.x - x, self.y - y)
     ...
-    >>> point = Point(1.0, 2.0)   
+    >>> point = Point(1.0, 2.0)
 
 The value is computed once:
 
@@ -60,6 +61,18 @@ Invalidating keys which are not in the cache, does not result in an error:
 
     >>> point.distance.invalidate(point, 47, 11)
 
+The documentation of the function is preserved (whether through the
+instance or the class), allowing Sphinx to extract it::
+
+    >>> print(point.distance.__doc__)
+    Compute the distance
+    >>> print(point.distance.__name__)
+    distance
+
+    >>> print(Point.distance.__doc__)
+    Compute the distance
+    >>> print(Point.distance.__name__)
+    distance
 
 It is possible to pass in a factory for the cache attribute. Create another
 Point class:
@@ -68,7 +81,7 @@ Point class:
     >>> class MyDict(dict):
     ...     pass
     >>> class Point(object):
-    ... 
+    ...
     ...     def __init__(self, x, y):
     ...         self.x, self.y = x, y
     ...
@@ -77,7 +90,7 @@ Point class:
     ...         print('computing distance')
     ...         return math.sqrt((self.x - x)**2 + (self.y - y)**2)
     ...
-    >>> point = Point(1.0, 2.0)   
+    >>> point = Point(1.0, 2.0)
     >>> point.distance(2, 2)
     computing distance
     1.0
