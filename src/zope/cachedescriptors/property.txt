@@ -17,7 +17,7 @@ persistent objects. Let's look at an example:
     >>> import math
 
     >>> class Point:
-    ... 
+    ...
     ...     def __init__(self, x, y):
     ...         self.x, self.y = x, y
     ...
@@ -26,7 +26,7 @@ persistent objects. Let's look at an example:
     ...         return math.sqrt(self.x**2 + self.y**2)
     ...     radius = property.CachedProperty(radius, 'x', 'y')
 
-    >>> point = Point(1.0, 2.0)   
+    >>> point = Point(1.0, 2.0)
 
 If we ask for the radius the first time:
 
@@ -60,6 +60,25 @@ Note that we don't have any non-volitile attributes added:
     >>> names
     ['q', 'x', 'y']
 
+Documentation and the ``__name__`` are preserved if the attribute is accessed through
+the class. This allows Sphinx to extract the documentation.
+
+    >>> class Point:
+    ...
+    ...     def __init__(self, x, y):
+    ...         self.x, self.y = x, y
+    ...
+    ...     def radius(self):
+    ...         '''The length of the line between self.x and self.y'''
+    ...         print('computing radius')
+    ...         return math.sqrt(self.x**2 + self.y**2)
+    ...     radius = property.CachedProperty(radius, 'x', 'y')
+
+    >>> print(Point.radius.__doc__)
+    The length of the line between self.x and self.y
+    >>> print(Point.radius.__name__)
+    radius
+
 
 Lazy Computed Attributes
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,7 +94,7 @@ attribute has been computed. Let's look at the previous example using
 lazy attributes:
 
     >>> class Point:
-    ... 
+    ...
     ...     def __init__(self, x, y):
     ...         self.x, self.y = x, y
     ...
@@ -84,7 +103,7 @@ lazy attributes:
     ...         print('computing radius')
     ...         return math.sqrt(self.x**2 + self.y**2)
 
-    >>> point = Point(1.0, 2.0)   
+    >>> point = Point(1.0, 2.0)
 
 If we ask for the radius the first time:
 
@@ -99,7 +118,7 @@ We see that the radius function is called, but if we ask for it again:
 
 The function isn't called.  If we change one of the attribute the
 radius depends on, it still isn't called:
-    
+
     >>> point.x = 2.0
     >>> '%.2f' % point.radius
     '2.24'
@@ -131,11 +150,11 @@ want to use a different name, we need to pass it:
     computing diameter
     '5.66'
 
-Documentation is preserved if the attribute is accessed through
+Documentation and the ``__name__`` are preserved if the attribute is accessed through
 the class. This allows Sphinx to extract the documentation.
 
     >>> class Point:
-    ... 
+    ...
     ...     def __init__(self, x, y):
     ...         self.x, self.y = x, y
     ...
@@ -147,6 +166,8 @@ the class. This allows Sphinx to extract the documentation.
 
     >>> print(Point.radius.__doc__)
     The length of the line between self.x and self.y
+    >>> print(Point.radius.__name__)
+    radius
 
 The documentation of the attribute when accessed through the
 instance will be the same as the return-value:
@@ -168,7 +189,7 @@ attribute isn't set by the property:
 
 
     >>> class Point:
-    ... 
+    ...
     ...     def __init__(self, x, y):
     ...         self.x, self.y = x, y
     ...
@@ -177,7 +198,7 @@ attribute isn't set by the property:
     ...         print('computing radius')
     ...         return math.sqrt(self.x**2 + self.y**2)
 
-    >>> point = Point(1.0, 2.0)   
+    >>> point = Point(1.0, 2.0)
 
     >>> '%.2f' % point.radius
     computing radius
@@ -194,6 +215,24 @@ difference to the builtin `property`:
     >>> point.radius
     5
 
+Documentation and the ``__name__`` are preserved if the attribute is accessed through
+the class. This allows Sphinx to extract the documentation.
+
+    >>> class Point:
+    ...
+    ...     def __init__(self, x, y):
+    ...         self.x, self.y = x, y
+    ...
+    ...     @property.readproperty
+    ...     def radius(self):
+    ...         '''The length of the line between self.x and self.y'''
+    ...         print('computing radius')
+    ...         return math.sqrt(self.x**2 + self.y**2)
+
+    >>> print(Point.radius.__doc__)
+    The length of the line between self.x and self.y
+    >>> print(Point.radius.__name__)
+    radius
 
 cachedIn
 ~~~~~~~~
@@ -202,7 +241,7 @@ The `cachedIn` property allows to specify the attribute where to store the
 computed value:
 
     >>> class Point:
-    ... 
+    ...
     ...     def __init__(self, x, y):
     ...         self.x, self.y = x, y
     ...
@@ -210,8 +249,8 @@ computed value:
     ...     def radius(self):
     ...         print('computing radius')
     ...         return math.sqrt(self.x**2 + self.y**2)
-    
-    >>> point = Point(1.0, 2.0)   
+
+    >>> point = Point(1.0, 2.0)
 
     >>> '%.2f' % point.radius
     computing radius
@@ -237,3 +276,20 @@ invalidation:
 
     >>> '%.2f' % point.radius
     '2.24'
+
+Documentation is preserved if the attribute is accessed through
+the class. This allows Sphinx to extract the documentation.
+
+    >>> class Point:
+    ...
+    ...     def __init__(self, x, y):
+    ...         self.x, self.y = x, y
+    ...
+    ...     @property.cachedIn('_radius_attribute')
+    ...     def radius(self):
+    ...         '''The length of the line between self.x and self.y'''
+    ...         print('computing radius')
+    ...         return math.sqrt(self.x**2 + self.y**2)
+
+    >>> print(Point.radius.__doc__)
+    The length of the line between self.x and self.y

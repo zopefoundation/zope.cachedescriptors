@@ -8,6 +8,10 @@ Changes
 
 - Drop support for Python 2.6 and 3.2.
 
+- The properties from the ``property`` module all preserve the
+  documentation string of the underlying function, and all except
+  ``cachedIn`` preserve everything that ``functools.update_wrapper``
+  preserves.
 
 4.1.0 (2014-12-26)
 ------------------
@@ -36,8 +40,8 @@ Changes
 ------------------
 
 - Remove dependency on ZODB by allowing to specify storage factory for
-  ``zope.cachedescriptors.method.cachedIn`` which is now `dict` by default.
-  If you need to use BTree instead, you must pass it as `factory` argument
+  ``zope.cachedescriptors.method.cachedIn`` which is now ``dict`` by default.
+  If you need to use BTree instead, you must pass it as ``factory`` argument
   to the ``zope.cachedescriptors.method.cachedIn`` decorator.
 
 - Remove zpkg-related file.

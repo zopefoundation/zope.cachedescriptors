@@ -14,6 +14,8 @@
 See the CachedProperty class.
 """
 
+from functools import update_wrapper
+
 ncaches = 0
 
 
@@ -27,6 +29,7 @@ class CachedProperty(object):
         self.data = (func, names,
                      "_v_cached_property_key_%s" % ncaches,
                      "_v_cached_property_value_%s" % ncaches)
+        update_wrapper(self, func)
 
     def __get__(self, inst, class_):
         if inst is None:
@@ -60,7 +63,7 @@ class Lazy(object):
         if name is None:
             name = func.__name__
         self.data = (func, name)
-        self.__doc__ = func.__doc__
+        update_wrapper(self, func)
 
     def __get__(self, inst, class_):
         if inst is None:
@@ -76,6 +79,7 @@ class readproperty(object):
 
     def __init__(self, func):
         self.func = func
+        update_wrapper(self, func)
 
     def __get__(self, inst, class_):
         if inst is None:
@@ -100,5 +104,6 @@ class cachedIn(object):
                 value = func(instance)
                 setattr(instance, self.attribute_name, value)
             return value
+        update_wrapper(get, func)
 
         return property(get)
