@@ -13,6 +13,9 @@ Changes
   ``cachedIn`` preserve everything that ``functools.update_wrapper``
   preserves.
 
+- ``property.CachedProperty`` is usable as a decorator, with or
+  without dependent attribute names.
+
 4.1.0 (2014-12-26)
 ------------------
 

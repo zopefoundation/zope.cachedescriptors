@@ -21,10 +21,10 @@ persistent objects. Let's look at an example:
     ...     def __init__(self, x, y):
     ...         self.x, self.y = x, y
     ...
+    ...     @property.CachedProperty('x', 'y')
     ...     def radius(self):
     ...         print('computing radius')
     ...         return math.sqrt(self.x**2 + self.y**2)
-    ...     radius = property.CachedProperty(radius, 'x', 'y')
 
     >>> point = Point(1.0, 2.0)
 
@@ -60,6 +60,40 @@ Note that we don't have any non-volitile attributes added:
     >>> names
     ['q', 'x', 'y']
 
+For backwards compatibility, the same thing can alternately be written
+without using decorator syntax:
+
+    >>> class Point:
+    ...
+    ...     def __init__(self, x, y):
+    ...         self.x, self.y = x, y
+    ...
+    ...     def radius(self):
+    ...         print('computing radius')
+    ...         return math.sqrt(self.x**2 + self.y**2)
+    ...     radius = property.CachedProperty(radius, 'x', 'y')
+
+    >>> point = Point(1.0, 2.0)
+
+If we ask for the radius the first time:
+
+    >>> '%.2f' % point.radius
+    computing radius
+    '2.24'
+
+We see that the radius function is called, but if we ask for it again:
+
+    >>> '%.2f' % point.radius
+    '2.24'
+
+The function isn't called.  If we change one of the attribute the
+radius depends on, it will be recomputed:
+
+    >>> point.x = 2.0
+    >>> '%.2f' % point.radius
+    computing radius
+    '2.83'
+
 Documentation and the ``__name__`` are preserved if the attribute is accessed through
 the class. This allows Sphinx to extract the documentation.
 
@@ -68,16 +102,56 @@ the class. This allows Sphinx to extract the documentation.
     ...     def __init__(self, x, y):
     ...         self.x, self.y = x, y
     ...
+    ...     @property.CachedProperty('x', 'y')
     ...     def radius(self):
     ...         '''The length of the line between self.x and self.y'''
     ...         print('computing radius')
     ...         return math.sqrt(self.x**2 + self.y**2)
-    ...     radius = property.CachedProperty(radius, 'x', 'y')
 
     >>> print(Point.radius.__doc__)
     The length of the line between self.x and self.y
     >>> print(Point.radius.__name__)
     radius
+
+It is possible to specify a CachedProperty that has no dependencies.
+For backwards compatibility this can be written in a few different ways::
+
+    >>> class Point:
+    ...     def __init__(self, x, y):
+    ...         self.x, self.y = x, y
+    ...
+    ...     @property.CachedProperty
+    ...     def no_deps_no_parens(self):
+    ...         print("No deps, no parens")
+    ...         return 1
+    ...
+    ...     @property.CachedProperty()
+    ...     def no_deps(self):
+    ...         print("No deps")
+    ...         return 2
+    ...
+    ...     def no_deps_old_style(self):
+    ...         print("No deps, old style")
+    ...         return 3
+    ...     no_deps_old_style = property.CachedProperty(no_deps_old_style)
+
+
+    >>> point = Point(1.0, 2.0)
+    >>> point.no_deps_no_parens
+    No deps, no parens
+    1
+    >>> point.no_deps_no_parens
+    1
+    >>> point.no_deps
+    No deps
+    2
+    >>> point.no_deps
+    2
+    >>> point.no_deps_old_style
+    No deps, old style
+    3
+    >>> point.no_deps_old_style
+    3
 
 
 Lazy Computed Attributes
