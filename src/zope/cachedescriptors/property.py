@@ -14,11 +14,15 @@
 See the CachedProperty class.
 """
 
+from functools import update_wrapper
+
+
 ncaches = 0
 
 
-class CachedProperty(object):
-    """Cached Properties.
+class _CachedProperty(object):
+    """
+    Cached property implementation class.
     """
 
     def __init__(self, func, *names):
@@ -27,6 +31,7 @@ class CachedProperty(object):
         self.data = (func, names,
                      "_v_cached_property_key_%s" % ncaches,
                      "_v_cached_property_value_%s" % ncaches)
+        update_wrapper(self, func)
 
     def __get__(self, inst, class_):
         if inst is None:
@@ -51,6 +56,36 @@ class CachedProperty(object):
 
         return value
 
+def CachedProperty(*args):
+    """
+    CachedProperties.
+
+    This is usable directly as a decorator when given names, or when not. Any of these patterns
+    will work:
+
+    * ``@CachedProperty``
+    * ``@CachedProperty()``
+    * ``@CachedProperty('n','n2')``
+    * def thing(self: ...; thing = CachedProperty(thing)
+    * def thing(self: ...; thing = CachedProperty(thing, 'n')
+
+    """
+
+    if not args:  # @CachedProperty()
+        return _CachedProperty  # A callable that produces the decorated function
+
+    arg1 = args[0]
+    names = args[1:]
+    if callable(arg1):  # @CachedProperty, *or* thing = CachedProperty(thing, ...)
+        return _CachedProperty(arg1, *names)
+
+    # @CachedProperty( 'n' )
+    # Ok, must be a list of string names. Which means we are used like a factory
+    # so we return a callable object to produce the actual decorated function
+    def factory(function):
+        return _CachedProperty(function, arg1, *names)
+    return factory
+
 
 class Lazy(object):
     """Lazy Attributes.
@@ -60,7 +95,7 @@ class Lazy(object):
         if name is None:
             name = func.__name__
         self.data = (func, name)
-        self.__doc__ = func.__doc__
+        update_wrapper(self, func)
 
     def __get__(self, inst, class_):
         if inst is None:
@@ -76,6 +111,7 @@ class readproperty(object):
 
     def __init__(self, func):
         self.func = func
+        update_wrapper(self, func)
 
     def __get__(self, inst, class_):
         if inst is None:
@@ -100,5 +136,6 @@ class cachedIn(object):
                 value = func(instance)
                 setattr(instance, self.attribute_name, value)
             return value
+        update_wrapper(get, func)
 
         return property(get)
