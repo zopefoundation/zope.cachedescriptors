@@ -17,7 +17,7 @@ computed value:
     ...
     ...     @method.cachedIn('_cache')
     ...     def distance(self, x, y):
-    ...         "Compute the distance"
+    ...         """Compute the distance"""
     ...         print('computing distance')
     ...         return math.hypot(self.x - x, self.y - y)
     ...

@@ -16,6 +16,9 @@ Changes
 - ``property.CachedProperty`` is usable as a decorator, with or
   without dependent attribute names.
 
+- ``method.cachedIn`` preserves the documentation string of the
+  underlying function, and everything else that ``functools.wraps`` preserves.
+
 4.1.0 (2014-12-26)
 ------------------
 

@@ -14,6 +14,7 @@
 
 from functools import wraps
 
+
 class cachedIn(object):
     """Cached method with given cache attribute."""
 

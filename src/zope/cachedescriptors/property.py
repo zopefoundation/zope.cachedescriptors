@@ -56,6 +56,7 @@ class _CachedProperty(object):
 
         return value
 
+
 def CachedProperty(*args):
     """
     CachedProperties.
