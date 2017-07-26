@@ -1,14 +1,17 @@
-Changes
-=======
+=========
+ Changes
+=========
 
 4.2.1 (unreleased)
-------------------
+==================
 
-- Nothing changed yet.
+- Add support for Python 3.6.
+
+- Drop support for Python 3.3.
 
 
 4.2.0 (2016-09-05)
-------------------
+==================
 
 - Add support for Python 3.5.
 
@@ -26,7 +29,7 @@ Changes
   underlying function, and everything else that ``functools.wraps`` preserves.
 
 4.1.0 (2014-12-26)
-------------------
+==================
 
 - Add support for PyPy and PyPy3.
 
@@ -36,7 +39,7 @@ Changes
 
 
 4.0.0 (2013-02-13)
-------------------
+==================
 
 - Drop support for Python 2.4 and 2.5.
 
@@ -44,12 +47,12 @@ Changes
 
 
 3.5.1 (2010-04-30)
-------------------
+==================
 
 - Remove undeclared testing dependency on zope.testing.
 
 3.5.0 (2009-02-10)
-------------------
+==================
 
 - Remove dependency on ZODB by allowing to specify storage factory for
   ``zope.cachedescriptors.method.cachedIn`` which is now ``dict`` by default.
@@ -64,6 +67,6 @@ Changes
   zope3-dev at zope.org is now retired.
 
 3.4.0 (2007-08-30)
-------------------
+==================
 
 Initial release as an independent package

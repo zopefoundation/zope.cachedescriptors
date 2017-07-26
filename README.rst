@@ -1,8 +1,24 @@
-``zope.cachedescriptors``
-=========================
+===========================
+ ``zope.cachedescriptors``
+===========================
+
+.. image:: https://img.shields.io/pypi/v/zope.cachedescriptors.svg
+        :target: https://pypi.python.org/pypi/zope.cachedescriptors/
+        :alt: Latest release
+
+.. image:: https://img.shields.io/pypi/pyversions/zope.cachedescriptors.svg
+        :target: https://pypi.org/project/zope.cachedescriptors/
+        :alt: Supported Python versions
 
 .. image:: https://travis-ci.org/zopefoundation/zope.cachedescriptors.png?branch=master
         :target: https://travis-ci.org/zopefoundation/zope.cachedescriptors
+
+.. image:: https://readthedocs.org/projects/zopehookable/badge/?version=latest
+        :target: http://zopehookable.readthedocs.io/en/latest/
+        :alt: Documentation Status
+
+.. image:: https://coveralls.io/repos/github/zopefoundation/zope.cachedescriptors/badge.svg?branch=master
+        :target: https://coveralls.io/github/zopefoundation/zope.cachedescriptors?branch=master
 
 Cached descriptors cache their output.  They take into account
 instance attributes that they depend on, so when the instance
@@ -18,8 +34,8 @@ Persistent descriptors:
 - ``property``
 
   A simple computed property.
-     
-  See ``src/zope/cachedescriptors/property.txt``.
+
+  See ``src/zope/cachedescriptors/property.rst``.
 
 - ``method``
 
@@ -28,7 +44,7 @@ Persistent descriptors:
   defined to depend on.
 
   .. note::
-  
+
      Only a cache based on arguments has been implemented so far.
-     
-  See ``src/zope/cachedescriptors/method.txt``.
+
+  See ``src/zope/cachedescriptors/method.rst``.

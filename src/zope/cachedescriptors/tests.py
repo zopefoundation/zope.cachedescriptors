@@ -19,5 +19,5 @@ import doctest
 
 def test_suite():
     return doctest.DocFileSuite(
-        'property.txt', 'method.txt',
+        'property.rst', 'method.rst',
         optionflags=doctest.ELLIPSIS)

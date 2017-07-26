@@ -2,14 +2,19 @@ language: python
 sudo: false
 python:
     - 2.7
-    - 3.3
     - 3.4
     - 3.5
+    - 3.6
     - pypy
-    - pypy3
+    - pypy3.5-5.8.0
 install:
-    - pip install .
+    - pip install -U pip setuptools
+    - pip install -U coverage coveralls
+    - pip install -U -e .[test]
 script:
-    - python setup.py test -q
+    - coverage run setup.py -q test -q
+after_success:
+    - coveralls
 notifications:
     email: false
+cache: pip

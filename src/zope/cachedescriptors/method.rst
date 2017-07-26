@@ -1,8 +1,9 @@
-Method Cache
-------------
+==============
+ Method Cache
+==============
 
 cachedIn
-~~~~~~~~
+========
 
 The `cachedIn` property allows to specify the attribute where to store the
 computed value:
