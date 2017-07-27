@@ -1,2 +1,10 @@
-include *.txt bootstrap.py buildout.cfg tox.ini *.rst
-recursive-include src *.py *.txt *.zcml
+include *.txt
+include bootstrap.py
+include buildout.cfg
+include tox.ini
+include *.rst
+include .travis.yml
+include .coveragerc
+
+recursive-include src *.py
+recursive-include src *.rst

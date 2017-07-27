@@ -1,5 +1,6 @@
-Cached Properties
------------------
+===================
+ Cached Properties
+===================
 
 Cached properties are computed properties that cache their computed
 values.  They take into account instance attributes that they depend
@@ -7,9 +8,9 @@ on, so when the instance attributes change, the properties will change
 the values they return.
 
 CachedProperty
-~~~~~~~~~~~~~~
+==============
 
-Cached properties cache their data in _v_ attributes, so they are
+Cached properties cache their data in ``_v_`` attributes, so they are
 also useful for managing the computation of volatile attributes for
 persistent objects. Let's look at an example:
 
@@ -155,7 +156,7 @@ For backwards compatibility this can be written in a few different ways::
 
 
 Lazy Computed Attributes
-~~~~~~~~~~~~~~~~~~~~~~~~
+========================
 
 The `property` module provides another descriptor that supports a
 slightly different caching model: lazy attributes.  Like cached
@@ -256,7 +257,7 @@ This is the same behaviour as the standard Python ``property``
 decorator.
 
 readproperty
-~~~~~~~~~~~~
+============
 
 readproperties are like lazy computed attributes except that the
 attribute isn't set by the property:
@@ -309,7 +310,7 @@ the class. This allows Sphinx to extract the documentation.
     radius
 
 cachedIn
-~~~~~~~~
+========
 
 The `cachedIn` property allows to specify the attribute where to store the
 computed value:

@@ -27,8 +27,8 @@ def read(*rnames):
 
 setup(
     name='zope.cachedescriptors',
-    version='4.2.1.dev0',
-    url='http://pypi.python.org/pypi/zope.cachedescriptors',
+    version='4.3.0.dev0',
+    url='http://github.com/zopefoundation/zope.cachedescriptors',
     author='Zope Foundation and Contributors',
     author_email='zope-dev@zope.org',
     license='ZPL 2.1',
@@ -40,30 +40,35 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Operating System :: OS Independent',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Software Development',
-        ],
+    ],
     description='Method and property caching decorators',
-    long_description=\
+    keywords='persistent caching decorator method property',
+    long_description=(
         read('README.rst')
         + '\n' +
-        read('src', 'zope', 'cachedescriptors', 'property.txt')
+        read('src', 'zope', 'cachedescriptors', 'property.rst')
         + '\n' +
-        read('src', 'zope', 'cachedescriptors', 'method.txt')
+        read('src', 'zope', 'cachedescriptors', 'method.rst')
         + '\n' +
-        read('CHANGES.rst'),
-
+        read('CHANGES.rst')),
     packages=find_packages('src'),
     package_dir={'': 'src'},
     test_suite='zope.cachedescriptors.tests.test_suite',
     namespace_packages=['zope',],
     include_package_data=True,
-    install_requires=['setuptools'],
+    install_requires=[
+        'setuptools',
+    ],
+    extras_require={
+        'test': [],
+    },
     zip_safe=False,
-    )
+)
