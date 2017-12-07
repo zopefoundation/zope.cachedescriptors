@@ -248,10 +248,9 @@ The documentation of the attribute when accessed through the
 instance will be the same as the return-value:
 
    >>> p = Point(1.0, 2.0)
-   >>> print (p.radius.__doc__)
+   >>> p.radius.__doc__ == float.__doc__
    computing radius
-   float(x) -> floating point number
-   ...
+   True
 
 This is the same behaviour as the standard Python ``property``
 decorator.
