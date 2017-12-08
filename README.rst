@@ -3,7 +3,7 @@
 ===========================
 
 .. image:: https://img.shields.io/pypi/v/zope.cachedescriptors.svg
-        :target: https://pypi.python.org/pypi/zope.cachedescriptors/
+        :target: https://pypi.org/project/zope.cachedescriptors/
         :alt: Latest release
 
 .. image:: https://img.shields.io/pypi/pyversions/zope.cachedescriptors.svg
