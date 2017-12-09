@@ -2,7 +2,7 @@
  Changes
 =========
 
-4.3.1 (unreleased)
+4.3.1 (2017-12-09)
 ==================
 
 - Fix test which will break in the upcomming Python 3.7 release.
