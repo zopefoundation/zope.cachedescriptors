@@ -5,7 +5,7 @@
 4.3.1 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Fix test which will break in the upcomming Python 3.7 release.
 
 
 4.3.0 (2017-07-27)
