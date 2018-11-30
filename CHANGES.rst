@@ -5,13 +5,13 @@
 4.3.2 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Add support for Python 3.7.
 
 
 4.3.1 (2017-12-09)
 ==================
 
-- Fix test which will break in the upcomming Python 3.7 release.
+- Fix test which will break in the upcoming Python 3.7 release.
 
 
 4.3.0 (2017-07-27)
