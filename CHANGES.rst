@@ -5,6 +5,10 @@
 4.3.2 (unreleased)
 ==================
 
+- Drop support for Python 3.4.
+
+- Add support for Python 3.8, 3.9, 3.10.
+
 - Add support for Python 3.7.
 
 

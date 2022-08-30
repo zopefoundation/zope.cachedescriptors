@@ -28,6 +28,7 @@ def read(*rnames):
     with open(os.path.join(os.path.dirname(__file__), *rnames)) as f:
         return f.read()
 
+
 setup(
     name='zope.cachedescriptors',
     version='4.3.2.dev0',
@@ -43,10 +44,12 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Operating System :: OS Independent',
@@ -66,7 +69,7 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     test_suite='zope.cachedescriptors.tests.test_suite',
-    namespace_packages=['zope',],
+    namespace_packages=['zope', ],
     include_package_data=True,
     install_requires=[
         'setuptools',

@@ -61,8 +61,8 @@ def CachedProperty(*args):
     """
     CachedProperties.
 
-    This is usable directly as a decorator when given names, or when not. Any of these patterns
-    will work:
+    This is usable directly as a decorator when given names, or when not. Any
+    of these patterns will work:
 
     * ``@CachedProperty``
     * ``@CachedProperty()``
@@ -73,16 +73,19 @@ def CachedProperty(*args):
     """
 
     if not args:  # @CachedProperty()
-        return _CachedProperty  # A callable that produces the decorated function
+        # A callable that produces the decorated function
+        return _CachedProperty
 
     arg1 = args[0]
     names = args[1:]
-    if callable(arg1):  # @CachedProperty, *or* thing = CachedProperty(thing, ...)
+    if callable(
+            arg1):  # @CachedProperty, *or* thing = CachedProperty(thing, ...)
         return _CachedProperty(arg1, *names)
 
     # @CachedProperty( 'n' )
-    # Ok, must be a list of string names. Which means we are used like a factory
-    # so we return a callable object to produce the actual decorated function
+    # Ok, must be a list of string names. Which means we are used like a
+    # factory so we return a callable object to produce the actual decorated
+    # function.
     def factory(function):
         return _CachedProperty(function, arg1, *names)
     return factory
