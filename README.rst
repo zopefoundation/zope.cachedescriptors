@@ -10,8 +10,8 @@
         :target: https://pypi.org/project/zope.cachedescriptors/
         :alt: Supported Python versions
 
-.. image:: https://travis-ci.com/zopefoundation/zope.cachedescriptors.svg?branch=master
-        :target: https://travis-ci.com/zopefoundation/zope.cachedescriptors
+.. image:: https://github.com/zopefoundation/zope.cachedescriptors/actions/workflows/tests.yml/badge.svg
+        :target: https://github.com/zopefoundation/zope.cachedescriptors/actions/workflows/tests.yml
 
 .. image:: https://readthedocs.org/projects/zopehookable/badge/?version=latest
         :target: http://zopehookable.readthedocs.io/en/latest/
