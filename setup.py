@@ -68,6 +68,7 @@ setup(
     test_suite='zope.cachedescriptors.tests.test_suite',
     namespace_packages=['zope', ],
     include_package_data=True,
+    python_requires='>=3.7',
     install_requires=[
         'setuptools',
     ],
