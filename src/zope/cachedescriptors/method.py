@@ -15,7 +15,7 @@
 from functools import wraps
 
 
-class cachedIn(object):
+class cachedIn:
     """Cached method with given cache attribute."""
 
     def __init__(self, attribute_name, factory=dict):
