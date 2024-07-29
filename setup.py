@@ -65,7 +65,6 @@ setup(
         read('CHANGES.rst')),
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    test_suite='zope.cachedescriptors.tests.test_suite',
     namespace_packages=['zope', ],
     include_package_data=True,
     python_requires='>=3.7',
