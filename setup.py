@@ -20,7 +20,6 @@
 """
 import os
 
-from setuptools import find_packages
 from setuptools import setup
 
 
@@ -31,7 +30,7 @@ def read(*rnames):
 
 setup(
     name='zope.cachedescriptors',
-    version='5.2.dev0',
+    version='6.0.dev0',
     url='http://github.com/zopefoundation/zope.cachedescriptors',
     author='Zope Foundation and Contributors',
     author_email='zope-dev@zope.dev',
@@ -63,9 +62,6 @@ setup(
         read('src', 'zope', 'cachedescriptors', 'method.rst')
         + '\n' +
         read('CHANGES.rst')),
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
-    namespace_packages=['zope', ],
     include_package_data=True,
     python_requires='>=3.9',
     install_requires=[
