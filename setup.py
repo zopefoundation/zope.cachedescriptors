@@ -30,7 +30,7 @@ def read(*rnames):
 
 setup(
     name='zope.cachedescriptors',
-    version='6.0.dev0',
+    version='6.0',
     url='http://github.com/zopefoundation/zope.cachedescriptors',
     author='Zope Foundation and Contributors',
     author_email='zope-dev@zope.dev',
