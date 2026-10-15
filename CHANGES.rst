@@ -5,7 +5,9 @@
 6.1 (unreleased)
 ================
 
-- Nothing changed yet.
+- Add support for Python 3.14, 3.15.
+
+- Drop support for Python 3.10, 3.9.
 
 
 6.0 (2025-09-12)
